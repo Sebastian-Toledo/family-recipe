@@ -1,11 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import ListRecipes from "../Components/Molecules/ListRecipes";
+import HomePage from "../Pages/HomePage";
+import RecipePage from "../Pages/RecipePage";
 import Routes from "./Routes";
 
 const router = createBrowserRouter([
   {
     path: Routes.HOME,
-    element: <ListRecipes />,
+    element: <HomePage />,
+  },
+  {
+    path: Routes.RECIPE,
+    element: <RecipePage />,
   },
 ]);
 

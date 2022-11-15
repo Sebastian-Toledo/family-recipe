@@ -1,7 +1,7 @@
 import { Button, Input } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import Recipe from "../../../Types/Recipe";
-import CardPlaceholder from "../../Atoms/CardPlaceholder";
+import CardPlaceholder from "../../Atoms/RecipePlaceholder";
 import CardRecipe from "../../Atoms/CardRecipe";
 
 function ListRecipes() {
@@ -13,19 +13,18 @@ function ListRecipes() {
   };
 
   useEffect(() => {
-    console.log("FETCHING DATA");
     fetch(`https://636a8235c07d8f936da02f4b.mockapi.io/recipes`)
       .then((response) => response.json())
       .then((recipe) => setRecipes(recipe));
   }, []);
 
-  const renderRecipe = (recipe: Recipe, key: number) => (
-    <CardRecipe recipe={recipe} key={key} />
+  const renderRecipe = (recipe: Recipe, index: number) => (
+    <CardRecipe recipe={recipe} key={`${JSON.stringify(recipe)}/${index}`} />
   );
 
   const renderContent = () => {
     if (!recipes.length) {
-      return [0, 1, 2].map(CardPlaceholder);
+      return [0, 1, 2].map((item) => <CardPlaceholder key={item} />);
     }
 
     return recipes.filter(filterRecipes).map(renderRecipe);

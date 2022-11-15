@@ -5,4 +5,5 @@ export default interface Recipe {
   ingredients: string[];
   method: string;
   author: string;
+  id: string;
 }

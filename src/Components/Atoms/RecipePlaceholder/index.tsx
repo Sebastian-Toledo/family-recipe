@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const CardPlaceholder = () => (
+const RecipePlaceholder = () => (
   <ContentLoader
     speed={2}
     width={400}
@@ -23,4 +23,4 @@ const CardPlaceholder = () => (
   </ContentLoader>
 );
 
-export default CardPlaceholder;
+export default RecipePlaceholder;
