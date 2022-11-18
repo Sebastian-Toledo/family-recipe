@@ -1,46 +1,55 @@
-import {
-  Flex,
-  Box,
-  Image,
-  Heading,
-  Divider,
-  Text,
-  useMultiStyleConfig,
-} from "@chakra-ui/react";
+import { Flex, Box, Image, Heading, Divider, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Routes from "../../../Router/Routes";
 import Recipe from "../../../Types/Recipe";
+import cardRecipeStyles from "./styles";
+import { IoIosArrowDown } from "react-icons/io";
+import { IconType } from "react-icons/lib";
 
 export interface Props {
   recipe: Recipe;
 }
+const imprimir = () => {
+  return console.log("hola");
+};
 
-const CardRecipe = ({ recipe }: Props) => {
-  const { imageURL, title, description, ingredients, method, author } = recipe;
-  const styles = useMultiStyleConfig("cardRecipe");
+const CardRecipe = (props: Props) => {
+  const { imageURL, title, description, ingredients, method, author, id } =
+    props.recipe;
 
   return (
-    <Link to={`/recipe/${recipe.id}`}>
-      <Flex __css={styles.mainContainer}>
-        <Box __css={styles.imageContainer}>
-          <Image src={imageURL} __css={styles.image} />
-        </Box>
-        <Flex __css={styles.informationContainer}>
-          <Flex __css={styles.centerContainer}>
-            <Heading __css={styles.title}>{title}</Heading>
-            <Text __css={styles.author}>Author: {author}</Text>
-            <Text __css={styles.description}>{description}</Text>
-            <Divider __css={styles.divider} />
+    <Link to={`${Routes.RECIPE}/${id}`}>
+      <Flex sx={cardRecipeStyles.mainContainer}>
+        <Flex sx={cardRecipeStyles.communityContainer}>
+          <Flex sx={cardRecipeStyles.like}>
+            <IoIosArrowDown onClick={imprimir} />
           </Flex>
-          <Flex __css={styles.betweenContainer}>
-            <Flex __css={styles.leftContainer}>
-              <Heading __css={styles.ingredientsHeading}>Ingredients</Heading>
+          <Flex sx={cardRecipeStyles.dislike}></Flex>
+          <Flex sx={cardRecipeStyles.favorite}></Flex>
+        </Flex>
+
+        <Flex>
+          <Image src={imageURL} sx={cardRecipeStyles.image} />
+        </Flex>
+        <Flex sx={cardRecipeStyles.informationContainer}>
+          <Flex sx={cardRecipeStyles.centerContainer}>
+            <Heading sx={cardRecipeStyles.title}>{title}</Heading>
+            <Text sx={cardRecipeStyles.author}>Author: {author}</Text>
+            <Text sx={cardRecipeStyles.description}>{description}</Text>
+          </Flex>
+          <Divider sx={cardRecipeStyles.divider} />
+          <Flex sx={cardRecipeStyles.betweenContainer}>
+            <Flex sx={cardRecipeStyles.rightContainer}>
+              <Heading sx={cardRecipeStyles.ingredientsHeading}>
+                Ingredients
+              </Heading>
               {ingredients.map((ingredient, index) => (
-                <Text __css={styles.ingredients}>{ingredient}</Text>
+                <Text sx={cardRecipeStyles.ingredients}>{ingredient}</Text>
               ))}
             </Flex>
-            <Flex __css={styles.rightContainer}>
-              <Heading __css={styles.methodContainer}>Method</Heading>
-              <Text __css={styles.method}>{method}</Text>
+            <Flex sx={cardRecipeStyles.leftContainer}>
+              <Heading sx={cardRecipeStyles.methodContainer}>Method</Heading>
+              <Text sx={cardRecipeStyles.method}>{method}</Text>
             </Flex>
           </Flex>
         </Flex>

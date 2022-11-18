@@ -1,11 +1,11 @@
-import { Flex } from "@chakra-ui/react";
 import ListRecipes from "../Components/Molecules/ListRecipes";
+import SidebarWithHeader from "../Components/Molecules/Sidebar";
 
 const HomePage = () => {
   return (
-    <Flex>
+    <SidebarWithHeader>
       <ListRecipes />
-    </Flex>
+    </SidebarWithHeader>
   );
 };
 

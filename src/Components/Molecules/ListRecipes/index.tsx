@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Flex, Input } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import Recipe from "../../../Types/Recipe";
 import CardPlaceholder from "../../Atoms/RecipePlaceholder";
@@ -38,14 +38,19 @@ function ListRecipes() {
   };
 
   return (
-    <div>
-      <p>Name of Food</p>
-      <Input type="text" value={nameFood} onChange={onChange} />
+    <Flex flexDirection="column" gap="4">
+      <Input
+        type="text"
+        value={nameFood}
+        onChange={onChange}
+        backgroundColor="#FDEBD0"
+        opacity={0.5}
+      />
       <Button colorScheme="teal" variant="solid" onClick={onChange}>
         Search
       </Button>
       {renderContent()}
-    </div>
+    </Flex>
   );
 }
 
