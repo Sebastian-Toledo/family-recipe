@@ -1,35 +1,13 @@
 import { ReactNode } from "react";
 import {
   Box,
-  CloseButton,
-  Flex,
-  Icon,
   useColorModeValue,
   Drawer,
   DrawerContent,
-  Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
 } from "@chakra-ui/react";
-import { FiHome, FiTrendingUp, FiBookOpen, FiStar } from "react-icons/fi";
-import { IconType } from "react-icons";
-import { Link } from "react-router-dom";
-import { ReactText } from "react";
-import Routes from "../../../Router/Routes";
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-  to: Routes;
-}
-
-const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome, to: Routes.HOME },
-  { name: "Favorites", icon: FiStar, to: Routes.FAVORITES },
-  { name: "Trending", icon: FiTrendingUp, to: Routes.TRENDING },
-  { name: "Create", icon: FiBookOpen, to: Routes.CREATE },
-];
+import SidebarContent from "../../Atoms/SidebarContent";
 
 interface Props {
   children: ReactNode;
@@ -41,6 +19,9 @@ export default function SidebarWithHeader(props: Props) {
     <Box
       minH="100vh"
       bg={useColorModeValue("gray.100", "gray.900")}
+      // backgroundRepeat={"no-repeat"}
+
+      backgroundSize={"cover"}
       backgroundImage="https://www.cocinatis.com/media/photologue/photos/recetas-de-calabaza-otono-faciles-saludable-cocinatis.jpg"
     >
       <SidebarContent
@@ -72,76 +53,3 @@ export default function SidebarWithHeader(props: Props) {
     </Box>
   );
 }
-
-interface SidebarProps extends BoxProps {
-  onClose: () => void;
-}
-
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-  return (
-    <Box
-      transition="3s ease"
-      bg="#FDEBD0"
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      w={{ base: "full", md: 60 }}
-      pos="fixed"
-      h="full"
-      opacity={0.7}
-      {...rest}
-    >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Menu
-        </Text>
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
-      </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} to={link.to}>
-          {link.name}
-        </NavItem>
-      ))}
-    </Box>
-  );
-};
-
-interface NavItemProps extends FlexProps {
-  icon: IconType;
-  to: Routes;
-  children: ReactText;
-}
-const NavItem = ({ to, icon, children, ...rest }: NavItemProps) => {
-  return (
-    <Link
-      to={`${to}`}
-      style={{ textDecoration: "none" }}
-      //_focus={{ boxShadow: "none" }}
-    >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: "cyan.400",
-          color: "white",
-        }}
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Link>
-  );
-};
