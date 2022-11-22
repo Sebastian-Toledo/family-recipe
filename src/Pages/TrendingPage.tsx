@@ -1,5 +1,11 @@
+import SidebarWithHeader from "../Components/Molecules/Sidebar";
+
 const TrendingPage = () => {
-  return <div></div>;
+  return (
+    <SidebarWithHeader>
+      <div></div>
+    </SidebarWithHeader>
+  );
 };
 
 export default TrendingPage;
