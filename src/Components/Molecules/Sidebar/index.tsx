@@ -19,9 +19,6 @@ export default function SidebarWithHeader(props: Props) {
     <Box
       minH="100vh"
       bg={useColorModeValue("gray.100", "gray.900")}
-      // backgroundRepeat={"no-repeat"}
-
-      backgroundSize={"cover"}
       backgroundImage="https://www.cocinatis.com/media/photologue/photos/recetas-de-calabaza-otono-faciles-saludable-cocinatis.jpg"
     >
       <SidebarContent

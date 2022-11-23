@@ -9,21 +9,18 @@ import {
   useColorModeValue,
   Image,
   Textarea,
-  HStack,
-  Tag,
-  TagLabel,
-  TagCloseButton,
   Center,
 } from "@chakra-ui/react";
+import IngredientInput from "../../Atoms/IngredientInput";
 
-const FormNewRecipe = () => {
+const FormRecipe = () => {
   //const { imageURL, title, description, ingredients, method, author, id } =
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} opacity={0.95}>
       <Stack
         spacing={4}
         w={"full"}
-        maxW="1000px"
+        maxW="1200px"
         bg={useColorModeValue("white", "gray.700")}
         rounded={"xl"}
         boxShadow={"lg"}
@@ -67,75 +64,12 @@ const FormNewRecipe = () => {
               <FormLabel>Description</FormLabel>
               <Textarea placeholder="Description:" w={"600px"} h={"100px"} />
             </FormControl>
-            <FormControl id="userName" isRequired>
-              <FormLabel>Ingredient</FormLabel>
-              <Input
-                w={"600px"}
-                placeholder="Insert one ingredient and press enter:"
-                _placeholder={{ color: "gray.400" }}
-                type="text"
-              />
-            </FormControl>
           </Flex>
         </FormControl>
-        <HStack spacing={0} w={"800"} h={"100"} flexWrap={"wrap"}>
-          {[
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-            "md",
-          ].map((size) => (
-            <Tag
-              size={size}
-              key={size}
-              borderRadius="full"
-              variant="solid"
-              colorScheme={"orange"}
-            >
-              <TagLabel>Green</TagLabel>
-              <TagCloseButton />
-            </Tag>
-          ))}
-        </HStack>
         <Center>
           <FormControl
             isRequired
-            display={"flex"}
+            display="flex"
             flexDirection={"column"}
             flexWrap={"wrap"}
             alignContent={"space-around"}
@@ -144,7 +78,7 @@ const FormNewRecipe = () => {
             <Textarea placeholder="Method:" w={"700px"} h={"175px"} />
           </FormControl>
         </Center>
-
+        <IngredientInput />
         <Stack spacing={6} direction={["column", "row"]}>
           <Button
             bg={"orange.400"}
@@ -172,4 +106,4 @@ const FormNewRecipe = () => {
   );
 };
 
-export default FormNewRecipe;
+export default FormRecipe;

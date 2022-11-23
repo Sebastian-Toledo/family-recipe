@@ -1,10 +1,10 @@
-import CreateRecipe from "../Components/Molecules/CreateRecipe.tsx";
+import FormRecipe from "../Components/Molecules/FormRecipe";
 import SidebarWithHeader from "../Components/Molecules/Sidebar";
 
 const CreatePage = () => {
   return (
     <SidebarWithHeader>
-      <CreateRecipe />
+      <FormRecipe />
     </SidebarWithHeader>
   );
 };
