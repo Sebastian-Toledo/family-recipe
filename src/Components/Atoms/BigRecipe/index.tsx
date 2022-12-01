@@ -8,6 +8,7 @@ import {
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import Recipe from "../../../Types/Recipe";
+import bigRecipeStyles from "./styles";
 
 interface Props {
   recipe: Recipe;
@@ -19,82 +20,27 @@ const BigRecipe = (props: Props) => {
   // const styles = useMultiStyleConfig("cardRecipe");
 
   return (
-    <Flex
-      background="#FDEBD0"
-      padding="md"
-      maxH="300px"
-      borderRadius="lg"
-      overflow="hidden"
-      width="1000px"
-      justifyItems="center"
-    >
+    <Flex sx={bigRecipeStyles.mainContainerFlex}>
       <Flex>
-        <Image src={imageURL} boxSize="300px" />
+        <Image src={imageURL} sx={bigRecipeStyles.imageContainer} />
       </Flex>
-      <Flex p="2" flex="1" flexDirection="column">
-        <Flex
-          gap="2"
-          textOverflow="ellipsis"
-          flexDirection="column"
-          alignItems="center"
-          bg="#FDEBD0"
-          overflow="hidden"
-          mb="4"
-        >
-          <Heading display="flex" as="h6" m="0" size="lg">
-            {title}
-          </Heading>
-          <Text fontSize="md" m="0" pt="0.5" pb="0.5">
-            Author: {author}
-          </Text>
-          <Text
-            fontSize="xs"
-            height="2.5em"
-            mb="2"
-            textAlign="center"
-            overflow="ellipsis"
-          >
-            {description}
-          </Text>
+      <Flex sx={bigRecipeStyles.mainInputContainer}>
+        <Flex sx={bigRecipeStyles.informationContainer}>
+          <Heading sx={bigRecipeStyles.title}>{title}</Heading>
+          <Text sx={bigRecipeStyles.author}>Author: {author}</Text>
+          <Text sx={bigRecipeStyles.description}>{description}</Text>
         </Flex>
-        <Divider
-          alignSelf="center"
-          orientation="horizontal"
-          bg="black"
-          height="2px"
-          width="60%"
-        />
-        <Flex
-          bg="#FDEBD0"
-          p="2"
-          mt="4"
-          flex="1"
-          justifyItems=""
-          alignContent="center"
-        >
-          <Flex bg="#FDEBD0" flexDirection="column" alignItems="center">
-            <Heading as="h6" mb="4" textAlign="center" size="md">
-              Ingredients
-            </Heading>
+        <Divider sx={bigRecipeStyles.divider} />
+        <Flex sx={bigRecipeStyles.betweenContainer}>
+          <Flex sx={bigRecipeStyles.flexContainerIngredients}>
+            <Heading sx={bigRecipeStyles.ingredientsTitle}>Ingredients</Heading>
             {ingredients.map((ingredient, index) => (
-              <Text
-                fontSize="xs"
-                textAlign="center"
-                m="0"
-                key="index"
-                overflow="hidden"
-              >
-                {ingredient}
-              </Text>
+              <Text sx={bigRecipeStyles.ingredients}>{ingredient}</Text>
             ))}
           </Flex>
-          <Flex bg="#FDEBD0" flexDirection="column" gap="2">
-            <Heading as="h6" mb="4" textAlign="center" size="md">
-              Method
-            </Heading>
-            <Text fontSize="xs" textAlign="center" m="0" overflow="hidden">
-              {method}
-            </Text>
+          <Flex sx={bigRecipeStyles.flexContainerMethod}>
+            <Heading sx={bigRecipeStyles.methodTitle}>Method</Heading>
+            <Text sx={bigRecipeStyles.method}>{method}</Text>
           </Flex>
         </Flex>
       </Flex>
