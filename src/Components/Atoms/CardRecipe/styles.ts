@@ -11,8 +11,10 @@ const cardRecipeStyles = {
   },
   communityContainer: {
     background: "#FDEBD0",
+    h: "100%",
     width: "30px",
-    alignItem: "center",
+    flexDirection: "column",
+    gap: "30",
   },
   like: {},
   dislike: {},
