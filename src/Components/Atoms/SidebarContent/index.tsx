@@ -24,11 +24,11 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Create", icon: FiBookOpen, to: Routes.CREATE },
 ];
 
-interface SidebarProps extends BoxProps {
+interface Props extends BoxProps {
   onClose: () => void;
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, ...rest }: Props) => {
   return (
     <Box
       transition="3s ease"

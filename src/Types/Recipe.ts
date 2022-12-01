@@ -6,4 +6,5 @@ export default interface Recipe {
   method: string;
   author: string;
   id: string;
+  likes: number;
 }

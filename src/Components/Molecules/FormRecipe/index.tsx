@@ -2,67 +2,92 @@ import {
   Button,
   Flex,
   FormControl,
-  FormLabel,
   Heading,
   Input,
   Stack,
   useColorModeValue,
-  Image,
   Textarea,
   Center,
+  Box,
 } from "@chakra-ui/react";
+import { useState, FormEvent, ChangeEvent } from "react";
+import Icons from "../../../assets";
+import Recipe from "../../../Types/Recipe";
+import ImageInput from "../../Atoms/ImageInput";
 import IngredientInput from "../../Atoms/IngredientInput";
 
 const FormRecipe = () => {
-  //const { imageURL, title, description, ingredients, method, author, id } =
+  // const { imageURL, title, description, ingredients, method, author, id } =
+  // props.formRecipe;
+
+  const [author, setAuthor] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [method, setMethod] = useState("");
+  const [ingredients, setIngredients] = useState<string[]>([]);
+
+  const handleChangeTitle = (e: FormEvent<HTMLInputElement>) => {
+    setTitle(e.currentTarget.value);
+  };
+
+  const handleChangeAuthor = (e: FormEvent<HTMLInputElement>) => {
+    setAuthor(e.currentTarget.value);
+  };
+
+  const handleChangeDescription = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+  };
+
+  const handleChangeMethod = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setMethod(e.target.value);
+  };
+
+  const handleChangeIngredients = (e: FormEvent<HTMLInputElement>) => {
+    setMethod(e.currentTarget.value);
+  };
+
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} opacity={0.95}>
       <Stack
         spacing={4}
-        w={"full"}
-        maxW="1200px"
+        w="4xl"
         bg={useColorModeValue("white", "gray.700")}
         rounded={"xl"}
         boxShadow={"lg"}
         p={6}
         my={12}
       >
-        <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-          Create New Recipe
-        </Heading>
-        <FormControl id="userName" display={"flex"}>
+        <Heading lineHeight={1.1}>Create New Recipe</Heading>
+        <FormControl display="flex" gap="15px">
           <FormControl isRequired>
-            <FormLabel>Image of Recipe</FormLabel>
-            <Stack direction={["column"]} spacing={6}>
-              <Image
-                boxSize="300px"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"
-              ></Image>
-              <Button w="300px">Change Image</Button>
-            </Stack>
+            <ImageInput />
           </FormControl>
           <Flex direction={"column"} gap={5}>
             <FormControl isRequired>
-              <FormLabel>Title</FormLabel>
               <Input
                 w={"600px"}
-                placeholder="Title:"
+                placeholder="Title"
+                onChange={handleChangeTitle}
                 _placeholder={{ color: "gray.500" }}
                 type="text"
               />
             </FormControl>
             <FormControl id="userName" isRequired>
-              <FormLabel>Author</FormLabel>
               <Input
                 w={"600px"}
-                placeholder="Author:"
+                placeholder="Author"
+                onChange={handleChangeAuthor}
                 _placeholder={{ color: "gray.500" }}
                 type="text"
               />
             </FormControl>
             <FormControl>
-              <FormLabel>Description</FormLabel>
-              <Textarea placeholder="Description:" w={"600px"} h={"100px"} />
+              <Textarea
+                placeholder="Description"
+                onChange={handleChangeDescription}
+                w={"600px"}
+                h={"100px"}
+              />
             </FormControl>
           </Flex>
         </FormControl>
@@ -74,11 +99,19 @@ const FormRecipe = () => {
             flexWrap={"wrap"}
             alignContent={"space-around"}
           >
-            <FormLabel>Method</FormLabel>
-            <Textarea placeholder="Method:" w={"700px"} h={"175px"} />
+            <Textarea
+              placeholder="Method"
+              onChange={handleChangeMethod}
+              w={"700px"}
+              h={"175px"}
+            />
           </FormControl>
         </Center>
-        <IngredientInput />
+        <IngredientInput
+          onChangeIngredients={(ingredients) => {
+            setIngredients(ingredients);
+          }}
+        />
         <Stack spacing={6} direction={["column", "row"]}>
           <Button
             bg={"orange.400"}
@@ -87,16 +120,7 @@ const FormRecipe = () => {
             _hover={{
               bg: "orange.500",
             }}
-          >
-            Cancel
-          </Button>
-          <Button
-            bg={"blue.400"}
-            color={"white"}
-            w="full"
-            _hover={{
-              bg: "blue.500",
-            }}
+            //onClick={}
           >
             Submit
           </Button>
