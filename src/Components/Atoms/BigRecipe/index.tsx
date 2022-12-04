@@ -1,12 +1,4 @@
-import {
-  Flex,
-  Box,
-  Image,
-  Heading,
-  Divider,
-  Text,
-  useMultiStyleConfig,
-} from "@chakra-ui/react";
+import { Flex, Image, Heading, Divider, Text } from "@chakra-ui/react";
 import Recipe from "../../../Types/Recipe";
 import bigRecipeStyles from "./styles";
 
@@ -17,7 +9,6 @@ interface Props {
 const BigRecipe = (props: Props) => {
   const { imageURL, title, description, ingredients, method, author } =
     props.recipe;
-  // const styles = useMultiStyleConfig("cardRecipe");
 
   return (
     <Flex sx={bigRecipeStyles.mainContainerFlex}>

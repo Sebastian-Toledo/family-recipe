@@ -2,10 +2,6 @@ import { Box, Image, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import Icons from "../../../assets/images/image-placeholder.svg";
 
-export interface image {
-  imageURL: string;
-}
-
 const ImageInput = () => {
   const [imageUrl, setImageUrl] = useState("");
 

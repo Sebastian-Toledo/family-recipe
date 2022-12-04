@@ -1,11 +1,6 @@
 import { ReactNode } from "react";
-import {
-  Box,
-  useColorModeValue,
-  Drawer,
-  DrawerContent,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, useColorModeValue } from "@chakra-ui/react";
+import imageBackground from "../../../assets/images/image-background.jpg";
 
 import SidebarContent from "../../Atoms/SidebarContent";
 
@@ -14,31 +9,14 @@ interface Props {
 }
 
 export default function SidebarWithHeader(props: Props) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
       minH="100vh"
       bg={useColorModeValue("gray.100", "gray.900")}
-      backgroundImage="https://www.cocinatis.com/media/photologue/photos/recetas-de-calabaza-otono-faciles-saludable-cocinatis.jpg"
+      backgroundImage={imageBackground}
     >
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
+      <SidebarContent />
+
       <Box
         ml={{ base: 0, md: 60 }}
         p="4"

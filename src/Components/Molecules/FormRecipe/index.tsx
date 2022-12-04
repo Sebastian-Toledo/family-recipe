@@ -8,18 +8,12 @@ import {
   useColorModeValue,
   Textarea,
   Center,
-  Box,
 } from "@chakra-ui/react";
 import { useState, FormEvent, ChangeEvent } from "react";
-import Icons from "../../../assets";
-import Recipe from "../../../Types/Recipe";
 import ImageInput from "../../Atoms/ImageInput";
 import IngredientInput from "../../Atoms/IngredientInput";
 
 const FormRecipe = () => {
-  // const { imageURL, title, description, ingredients, method, author, id } =
-  // props.formRecipe;
-
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
