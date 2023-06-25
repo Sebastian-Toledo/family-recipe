@@ -2,7 +2,7 @@ import { Button, Flex, Input } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import Recipe from "../../../Types/Recipe";
 import CardPlaceholder from "../../Atoms/RecipePlaceholder";
-import CardRecipe from "../../Atoms/CardRecipe";
+import CardRecipe from "../CardRecipe";
 
 function ListRecipes() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -38,7 +38,7 @@ function ListRecipes() {
   };
 
   return (
-    <Flex flexDirection="column" gap="4">
+    <Flex flexDirection="column" gap="4" w="50%" alignSelf="center" mt="20">
       <Input
         type="text"
         value={nameFood}
@@ -49,6 +49,7 @@ function ListRecipes() {
       <Button colorScheme="teal" variant="solid" onClick={onChange}>
         Search
       </Button>
+
       {renderContent()}
     </Flex>
   );

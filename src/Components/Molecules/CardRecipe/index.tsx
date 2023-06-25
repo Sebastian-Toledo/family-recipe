@@ -1,6 +1,5 @@
 import {
   Flex,
-  Box,
   Image,
   Heading,
   Divider,
@@ -11,12 +10,7 @@ import {
 import Routes from "../../../Router/Routes";
 import Recipe from "../../../Types/Recipe";
 import cardRecipeStyles from "./styles";
-import {
-  IoIosArrowDown,
-  IoIosArrowUp,
-  IoIosHeartEmpty,
-  IoIosHeart,
-} from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosHeartEmpty } from "react-icons/io";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -56,7 +50,7 @@ const CardRecipe = (props: Props) => {
   };
 
   return (
-    <Flex>
+    <Flex w="50%">
       <Center>
         <Flex sx={cardRecipeStyles.communityContainer}>
           <Flex sx={cardRecipeStyles.like}>

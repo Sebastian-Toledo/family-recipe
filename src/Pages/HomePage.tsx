@@ -1,11 +1,13 @@
+import { Flex } from "@chakra-ui/react";
 import ListRecipes from "../Components/Molecules/ListRecipes";
-import SidebarWithHeader from "../Components/Molecules/Sidebar";
+import WithSubnavigation from "../Components/Molecules/WithSubnavigation";
 
 const HomePage = () => {
   return (
-    <SidebarWithHeader>
+    <Flex direction="column" background="#FFE8C0">
+      <WithSubnavigation />
       <ListRecipes />
-    </SidebarWithHeader>
+    </Flex>
   );
 };
 

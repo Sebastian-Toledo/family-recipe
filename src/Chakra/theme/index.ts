@@ -1,5 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
-import cardRecipe from "../../Components/Atoms/CardRecipe/styles";
+import cardRecipe from "../../Components/Molecules/CardRecipe/styles";
 
 const customTheme = extendTheme({
   components: { cardRecipe },
