@@ -1,4 +1,4 @@
-import { Box, Flex, Button, Stack, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Stack, useColorModeValue } from "@chakra-ui/react";
 
 import DesktopNavBar from "../DesktopNavBar";
 import SingInButton from "../../Atoms/SingInButton";
@@ -6,7 +6,11 @@ import Logo from "../../Atoms/Logo";
 import SearchRecipe from "../../Atoms/SearchRecipe";
 import SingUpButton from "../../Atoms/SingUpButton";
 
-const WithSubnavigation = () => {
+interface Props {
+  handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const WithSubnavigation = (props: Props) => {
   return (
     <Flex
       bg={useColorModeValue("orange.300", "gray.800")}
@@ -28,7 +32,7 @@ const WithSubnavigation = () => {
         gap={4}
       >
         <DesktopNavBar />
-        <SearchRecipe />
+        <SearchRecipe handleSearch={props.handleSearch} />
       </Flex>
       <Stack direction={"row"} spacing={6}>
         <SingInButton />

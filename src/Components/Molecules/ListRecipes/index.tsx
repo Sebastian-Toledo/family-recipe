@@ -1,16 +1,11 @@
 import { Flex } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import Recipe from "../../../Types/Recipe";
 import CardPlaceholder from "../../Atoms/RecipePlaceholder";
 import CardRecipe from "../CardRecipe";
 
-function ListRecipes() {
+function ListRecipes({ searchValue }: { searchValue: string }) {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [nameFood, setNameFood] = useState("");
-
-  const onChange = (event: any) => {
-    setNameFood(event.currentTarget.value);
-  };
 
   useEffect(() => {
     fetch(`https://636a8235c07d8f936da02f4b.mockapi.io/recipes`)
@@ -31,10 +26,10 @@ function ListRecipes() {
   };
 
   const filterRecipes = (recipe: Recipe) => {
-    if (!nameFood) {
+    if (!searchValue) {
       return true;
     }
-    return recipe.title.toLowerCase().includes(nameFood.toLowerCase());
+    return recipe.title.toLowerCase().includes(searchValue.toLowerCase());
   };
 
   return (

@@ -1,23 +1,14 @@
-import {
-  Button,
-  Fade,
-  Flex,
-  Icon,
-  IconButton,
-  Input,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { ChangeEvent, useState } from "react";
+import { Fade, Flex, IconButton, Input, useDisclosure } from "@chakra-ui/react";
+import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
-const SearchRecipe = () => {
-  const { isOpen, onToggle } = useDisclosure();
-  const [getValue, setValue] = useState("");
+interface Props {
+  handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    console.log(e.target.value);
-  };
+const SearchRecipe = (props: Props) => {
+  const { isOpen, onToggle } = useDisclosure();
+  const [searchValue, setSearchValue] = useState("");
 
   return (
     <Flex gap={2} alignSelf={"center"}>
@@ -26,7 +17,7 @@ const SearchRecipe = () => {
           type="text"
           backgroundColor="#FDEBD0"
           opacity={0.5}
-          onChange={onChange}
+          onChange={props.handleSearch}
         />
       </Fade>
       <Flex>
