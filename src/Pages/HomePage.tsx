@@ -11,7 +11,7 @@ const HomePage = () => {
   };
 
   return (
-    <Flex direction="column" background="#FFE8C0">
+    <Flex direction="column" background="#FFE8C0" maxH="100vh" maxW="100vw">
       <WithSubnavigation handleSearch={handleSearch} />
       <ListRecipes searchValue={getSearchValue} />
     </Flex>

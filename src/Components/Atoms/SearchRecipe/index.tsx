@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
 interface Props {
-  handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearch?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchRecipe = (props: Props) => {

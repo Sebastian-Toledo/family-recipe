@@ -7,7 +7,7 @@ import SearchRecipe from "../../Atoms/SearchRecipe";
 import SingUpButton from "../../Atoms/SingUpButton";
 
 interface Props {
-  handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearch?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const WithSubnavigation = (props: Props) => {

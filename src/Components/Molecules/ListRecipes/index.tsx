@@ -33,7 +33,15 @@ function ListRecipes({ searchValue }: { searchValue: string }) {
   };
 
   return (
-    <Flex flexDirection="column" gap="4" w="50%" alignSelf="center" mt="20">
+    <Flex
+      flexWrap="wrap"
+      gap="4"
+      mt="4"
+      justifyContent="center"
+      mb="4"
+      maxH="100vh"
+      maxW="100vw"
+    >
       {renderContent()}
     </Flex>
   );
