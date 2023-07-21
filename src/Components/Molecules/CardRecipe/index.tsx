@@ -13,9 +13,12 @@ const CardRecipe = (props: Props) => {
   const { imageURL, title, id } = props.recipe;
 
   return (
-    <Link to={`${Routes.RECIPE}/${id}`}>
+    <Flex _hover={{opacity:0.5}} >
+      <Link to={`${Routes.RECIPE}/${id}`} >
       <Image src={imageURL} sx={cardRecipeStyles.image} />
     </Link>
+    </Flex>
+    
   );
 };
 

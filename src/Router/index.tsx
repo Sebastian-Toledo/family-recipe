@@ -5,6 +5,8 @@ import HomePage from "../Pages/HomePage";
 import RecipePage from "../Pages/RecipePage";
 import TrendingPage from "../Pages/TrendingPage";
 import Routes from "./Routes";
+import RegisterPage from "../Pages/RegisterPage";
+import LoginPage from "../Pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: Routes.CREATE,
     element: <CreatePage />,
+  },
+  {
+    path: Routes.REGISTER,
+    element: <RegisterPage />,
+  },
+  {
+    path: Routes.LOGIN,
+    element: <LoginPage />,
   },
 ]);
 

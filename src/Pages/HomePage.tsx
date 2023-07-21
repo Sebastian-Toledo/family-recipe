@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import ListRecipes from "../Components/Molecules/ListRecipes";
-import WithSubnavigation from "../Components/Molecules/WithSubnavigation";
+import WithSubnavigation from "../Components/Organism/WithSubnavigation";
 import { ChangeEvent, useState } from "react";
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
   };
 
   return (
-    <Flex direction="column" background="#FFE8C0" maxH="100vh" maxW="100vw">
+    <Flex direction="column" backgroundColor="#FFE8C0" h="100%">
       <WithSubnavigation handleSearch={handleSearch} />
       <ListRecipes searchValue={getSearchValue} />
     </Flex>

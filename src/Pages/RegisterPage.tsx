@@ -1,9 +1,8 @@
-import { Flex } from "@chakra-ui/react";
-import FormRecipe from "../Components/Organism/FormRecipe";
-import WithSubnavigation from "../Components/Organism/WithSubnavigation";
 import { ChangeEvent, useState } from "react";
+import { Flex } from "@chakra-ui/react";
+import WithSubnavigation from "../Components/Organism/WithSubnavigation";
 
-const CreatePage = () => {
+const RegisterPage = () => {
   const [getSearchValue, setSearchValue] = useState("");
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,9 +12,8 @@ const CreatePage = () => {
   return (
     <Flex direction="column" backgroundColor="#FFE8C0">
       <WithSubnavigation handleSearch={handleSearch} />
-      <FormRecipe />
     </Flex>
   );
 };
 
-export default CreatePage;
+export default RegisterPage;

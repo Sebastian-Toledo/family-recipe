@@ -8,7 +8,7 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import DesktopSubNav from "../DesktopSubNav";
+import DesktopSubNav from "../../Molecules/DesktopSubNav";
 import NAV_ITEMS from "../../../constants/navItems";
 
 const DesktopNavBar = () => {
