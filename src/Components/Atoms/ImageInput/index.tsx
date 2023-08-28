@@ -10,14 +10,9 @@ const ImageInput = () => {
     if (!image) {
       return;
     }
-    // const reader = new FileReader();
-    // reader.addEventListener("load", () => {
-    //   setImgData(image);
-    // });
     const currentImageURL = URL.createObjectURL(image);
     console.log(currentImageURL);
     setImageUrl(currentImageURL);
-    // reader.readAsDataURL(image);
   };
 
   return (

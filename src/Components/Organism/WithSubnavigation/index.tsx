@@ -36,12 +36,12 @@ const WithSubnavigation = (props: Props) => {
       <Stack direction={"row"} spacing={6}>
         <ButtonCompounent
           href="http://192.168.1.109:3000/register"
-          label="Register"
+          text="Register"
           styles={buttonStyles.register}
         />
         <ButtonCompounent
           href="http://192.168.1.109:3000/login"
-          label="Login"
+          text="Login"
           styles={buttonStyles.login}
         />
       </Stack>

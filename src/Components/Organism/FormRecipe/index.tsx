@@ -12,6 +12,7 @@ import {
 import { useState, FormEvent, ChangeEvent } from "react";
 import ImageInput from "../../Atoms/ImageInput";
 import IngredientInput from "../../Atoms/IngredientInput";
+import HeadingRecipe from "../../Atoms/HeadingRecipe";
 
 const FormRecipe = () => {
   const [author, setAuthor] = useState("");
@@ -51,7 +52,7 @@ const FormRecipe = () => {
         p={6}
         my={12}
       >
-        <Heading lineHeight={1.1}>Create New Recipe</Heading>
+        <HeadingRecipe text="Create New Recipe" />
         <FormControl display="flex" gap="15px">
           <FormControl isRequired>
             <ImageInput />

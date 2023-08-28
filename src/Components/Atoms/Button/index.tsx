@@ -1,15 +1,15 @@
 import { Button, Link, SystemStyleObject } from "@chakra-ui/react";
 
 interface Props {
-  label: string;
+  text: string;
   styles: SystemStyleObject;
   href: string;
 }
 
-const ButtonCompounent = ({ label, styles, href }: Props) => {
+const ButtonCompounent = ({ text, styles, href }: Props) => {
   return (
     <Button as={Link} sx={styles} href={href}>
-      {label}
+      {text}
     </Button>
   );
 };

@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 import imageBackground from "../../../assets/images/image-background.jpg";
-
-import SidebarContent from "../SidebarContent";
+import SidebarContent from "../../Organism/SidebarContent";
 
 interface Props {
   children: ReactNode;
