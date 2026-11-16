@@ -7,6 +7,7 @@ import { RecipeGrid, RecipeGridSkeleton } from "@/components/RecipeCard";
 import SearchBox from "@/components/SearchBox";
 import EmptyState from "@/components/EmptyState";
 import Logo from "@/components/Logo";
+import Namaste from "@/components/Namaste";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 type SearchParams = Promise<{ q?: string; categoria?: string }>;
@@ -62,6 +63,8 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
       <Suspense key={`${q}|${categoria}`} fallback={<RecipeGridSkeleton />}>
         <Results q={q} category={categoria} />
       </Suspense>
+
+      <Namaste />
     </>
   );
 }
