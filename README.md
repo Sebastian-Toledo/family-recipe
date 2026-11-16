@@ -66,7 +66,7 @@ Para abrir el registro a la familia más adelante: `ALLOW_SIGNUP=true` y, si que
 | `npm run typecheck`   | Revisa los tipos de TypeScript.                                 |
 | `npm run db:generate` | Crea una migración nueva después de cambiar `src/db/schema.ts`. |
 | `npm run db:studio`   | Abre Drizzle Studio para ver y editar la base desde el navegador.|
-| `npm run db:examples` | Agrega las 23 recetas de ejemplo que falten (`-- --remove` las borra todas). |
+| `npm run db:examples` | Agrega las 43 recetas de ejemplo que falten (`-- --remove` las borra todas). |
 
 ## Stack
 
