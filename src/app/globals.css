@@ -221,6 +221,76 @@
   --color-line: #3c2b37;
 }
 
+/* ---------- Temas Mar y Lavanda (claro y oscuro) ---------- */
+:root[data-palette="mar"] {
+  --color-brand-50: #effafa;
+  --color-brand-100: #d3f0f0;
+  --color-brand-200: #a8e0e1;
+  --color-brand-300: #73c8ca;
+  --color-brand-400: #3fa9ad;
+  --color-brand-500: #1f7a80;
+  --color-brand-600: #19656b;
+  --color-brand-700: #175257;
+  --color-brand-800: #154247;
+  --color-brand-900: #12363a;
+  --color-alt-50: #fef3ef;
+  --color-alt-100: #fcdcd1;
+  --color-alt-300: #f2a189;
+  --color-alt-500: #e0694a;
+  --color-alt-700: #9c4029;
+  --color-pop-50: #fdf8ec;
+  --color-pop-100: #f8ecc9;
+  --color-pop-300: #e9cc7e;
+  --color-pop-500: #c9a23f;
+  --color-pop-700: #85681f;
+  --color-canvas: #e1f0ef;
+  --color-surface: #f9fdfd;
+  --color-subtle: #cce4e3;
+  --color-line: #b6d6d5;
+}
+:root[data-palette="lavanda"] {
+  --color-brand-50: #f5f3fc;
+  --color-brand-100: #ebe6f8;
+  --color-brand-200: #d8cff1;
+  --color-brand-300: #bcaee6;
+  --color-brand-400: #9b87d7;
+  --color-brand-500: #6b56b8;
+  --color-brand-600: #5a479d;
+  --color-brand-700: #4a3b80;
+  --color-brand-800: #3d3268;
+  --color-brand-900: #332b55;
+  --color-alt-50: #fdf7e9;
+  --color-alt-100: #f9e9c3;
+  --color-alt-300: #ebc36c;
+  --color-alt-500: #c7922a;
+  --color-alt-700: #835d15;
+  --color-pop-50: #fdf2f5;
+  --color-pop-100: #fadde6;
+  --color-pop-300: #ef9db5;
+  --color-pop-500: #d45a80;
+  --color-pop-700: #8f3554;
+  --color-canvas: #ebe7f6;
+  --color-surface: #fcfbff;
+  --color-subtle: #dbd3ef;
+  --color-line: #cbc0e6;
+}
+:root[data-theme="dark"][data-palette="mar"] {
+  --color-canvas: #0f1717;
+  --color-surface: #172222;
+  --color-subtle: #202d2e;
+  --color-ink: #e8f2f2;
+  --color-muted: #9fb3b3;
+  --color-line: #2a3a3b;
+}
+:root[data-theme="dark"][data-palette="lavanda"] {
+  --color-canvas: #15131c;
+  --color-surface: #1e1b28;
+  --color-subtle: #292535;
+  --color-ink: #eeebf6;
+  --color-muted: #aaa3bd;
+  --color-line: #353046;
+}
+
 @layer base {
   html {
     color-scheme: light;

@@ -8,6 +8,8 @@ export const PALETTES = [
   { id: "tomate", name: "Tomate", hint: "Tomate y albahaca", colors: ["#c8372b", "#3f7d4e"] },
   { id: "talavera", name: "Azul talavera", hint: "Azul y ocre de cerámica", colors: ["#2f6fab", "#c9901b"] },
   { id: "ciruela", name: "Ciruela", hint: "Ciruela y salvia", colors: ["#9a4a7b", "#3c8478"] },
+  { id: "mar", name: "Mar", hint: "Petróleo y coral", colors: ["#1f7a80", "#e0694a"] },
+  { id: "lavanda", name: "Lavanda", hint: "Lavanda y miel", colors: ["#6b56b8", "#c7922a"] },
 ] as const;
 
 export type PaletteId = (typeof PALETTES)[number]["id"];
