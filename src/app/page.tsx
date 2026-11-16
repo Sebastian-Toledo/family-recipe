@@ -6,6 +6,8 @@ import { getUser } from "@/lib/session";
 import { RecipeGrid, RecipeGridSkeleton } from "@/components/RecipeCard";
 import SearchBox from "@/components/SearchBox";
 import EmptyState from "@/components/EmptyState";
+import Logo from "@/components/Logo";
+import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 type SearchParams = Promise<{ q?: string; categoria?: string }>;
 
@@ -24,11 +26,10 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
 
   return (
     <>
-      <section className="mb-8 rounded-2xl bg-gradient-to-br from-brand-50 to-subtle px-6 py-10 text-center md:py-14 dark:from-surface dark:to-subtle">
-        <h1 className="text-4xl font-bold md:text-5xl">Las recetas de mamá</h1>
-        <p className="mx-auto mt-3 max-w-2xl text-lg text-muted">
-          Todas las recetas de la familia en un solo lugar, para cocinarlas cuando quieras.
-        </p>
+      <section className="mb-8 rounded-2xl bg-gradient-to-br from-brand-200 via-pop-100 to-alt-300/70 px-6 py-10 text-center md:py-14 dark:from-brand-500/20 dark:via-surface dark:to-alt-500/20">
+        <Logo className="mx-auto mb-4 size-16" />
+        <h1 className="text-4xl font-bold md:text-5xl">{SITE_NAME}</h1>
+        <p className="mx-auto mt-3 max-w-2xl text-lg text-muted">{SITE_TAGLINE}</p>
         <Suspense>
           <SearchBox />
         </Suspense>

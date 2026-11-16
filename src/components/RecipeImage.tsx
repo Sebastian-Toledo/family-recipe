@@ -1,4 +1,4 @@
-import { categoryEmoji } from "@/lib/categories";
+import { TONE_CLASSES, categoryEmoji, categoryTone } from "@/lib/categories";
 
 interface Props {
   src: string | null;
@@ -16,7 +16,7 @@ export default function RecipeImage({ src, alt, category, className = "", emojiC
         // eslint-disable-next-line @next/next/no-img-element
         <img src={src} alt={alt} loading="lazy" className="size-full object-cover" />
       ) : (
-        <div className="grid size-full place-items-center bg-gradient-to-br from-brand-100 to-subtle dark:from-subtle dark:to-surface">
+        <div className={`grid size-full place-items-center bg-gradient-to-br ${TONE_CLASSES[categoryTone(category)].placeholder}`}>
           <span className={emojiClassName} aria-hidden>
             {categoryEmoji(category)}
           </span>

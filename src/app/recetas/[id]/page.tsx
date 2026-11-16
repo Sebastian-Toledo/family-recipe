@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ChevronRight, Clock, User, Users } from "lucide-react";
 import { getRecipe, listRecipes } from "@/lib/recipes";
 import { getUser } from "@/lib/session";
+import { TONE_CLASSES, categoryTone } from "@/lib/categories";
 import RecipeImage from "@/components/RecipeImage";
 import RecipeActions from "@/components/RecipeActions";
 import IngredientChecklist from "@/components/IngredientChecklist";
@@ -55,7 +56,9 @@ export default async function RecipePage({ params, searchParams }: Props) {
 
       <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
         <div>
-          <p className="eyebrow text-sm">{recipe.category}</p>
+          <p className={`text-sm font-bold tracking-wider uppercase ${TONE_CLASSES[categoryTone(recipe.category)].label}`}>
+            {recipe.category}
+          </p>
           <h1 className="mt-2 text-4xl font-bold md:text-5xl">{recipe.title}</h1>
           {recipe.description && <p className="mt-4 text-lg whitespace-pre-line text-muted">{recipe.description}</p>}
 
@@ -107,7 +110,7 @@ export default async function RecipePage({ params, searchParams }: Props) {
           <ol className="space-y-6">
             {recipe.steps.map((step, i) => (
               <li key={i} className="flex gap-4">
-                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand-500 font-heading font-bold text-white">
+                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-alt-100 font-heading font-bold text-alt-700 dark:bg-alt-500/20 dark:text-alt-300">
                   {i + 1}
                 </span>
                 <p className="pt-1 text-lg whitespace-pre-line">{step}</p>
@@ -116,12 +119,12 @@ export default async function RecipePage({ params, searchParams }: Props) {
           </ol>
 
           {recipe.tips && (
-            <aside className="mt-10 flex gap-3 rounded-lg border-l-4 border-brand-400 bg-brand-50 p-4 dark:bg-subtle">
+            <aside className="mt-10 flex gap-3 rounded-lg border-l-4 border-pop-500 bg-pop-50 p-4 dark:bg-pop-500/10">
               <span className="text-2xl" aria-hidden>
                 💡
               </span>
               <div>
-                <p className="font-bold">El secreto</p>
+                <p className="font-bold text-pop-700 dark:text-pop-300">El secreto</p>
                 <p className="whitespace-pre-line">{recipe.tips}</p>
               </div>
             </aside>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Clock, Heart, User } from "lucide-react";
 import type { RecipeSummary } from "@/lib/recipes";
+import { TONE_CLASSES, categoryTone } from "@/lib/categories";
 import RecipeImage from "./RecipeImage";
 
 export function RecipeCard({ recipe }: { recipe: RecipeSummary }) {
@@ -15,7 +16,9 @@ export function RecipeCard({ recipe }: { recipe: RecipeSummary }) {
         )}
       </div>
       <div className="p-4">
-        <p className="eyebrow">{recipe.category}</p>
+        <p className={`text-xs font-bold tracking-wider uppercase ${TONE_CLASSES[categoryTone(recipe.category)].label}`}>
+          {recipe.category}
+        </p>
         <h3 className="mt-1 line-clamp-2 text-lg font-bold">
           <Link href={`/recetas/${recipe.id}`} className="after:absolute after:inset-0">
             {recipe.title}
