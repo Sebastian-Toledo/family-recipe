@@ -3,6 +3,7 @@
  *  1. En local, crea .env.local con un secreto aleatorio si no existe.
  *  2. Aplica las migraciones pendientes de la base de datos.
  *  3. En local y con la base vacía, carga un usuario demo y recetas de ejemplo.
+ *  4. Con EXAMPLE_RECIPES=true agrega las recetas de ejemplo (también en Vercel); con =remove las borra.
  */
 import fs from "node:fs";
 import crypto from "node:crypto";
@@ -50,6 +51,21 @@ async function main() {
   if (!isCI && process.env.SEED !== "false") {
     const { seedIfEmpty } = await import("./seed");
     await seedIfEmpty(db);
+  }
+
+  // Recetas de ejemplo a pedido, por ejemplo en producción para probar el sitio.
+  const examples = process.env.EXAMPLE_RECIPES?.trim().toLowerCase();
+  if (examples === "true" || examples === "remove") {
+    const { addSampleRecipes, DEMO_EMAIL } = await import("./seed");
+    if (examples === "remove") {
+      const { eq } = await import("drizzle-orm");
+      const { user } = await import("../src/db/schema");
+      await db.delete(user).where(eq(user.email, DEMO_EMAIL));
+      console.log("[setup] Se borraron las recetas de ejemplo.");
+    } else {
+      const added = await addSampleRecipes(db, { withPassword: DATABASE_URL.startsWith("file:") });
+      console.log(`[setup] Recetas de ejemplo: se agregaron ${added}.`);
+    }
   }
 
   // La cuenta de quien administra (ADMIN_EMAIL / ADMIN_PASSWORD), también en Vercel.

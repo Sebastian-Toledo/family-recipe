@@ -128,4 +128,12 @@ A mano, sin la integración:
 
 En producción no se cargan los datos de ejemplo: entrás con la cuenta de `ADMIN_EMAIL` y empezás a cargar recetas.
 
+### Recetas de ejemplo en producción (opcional)
+
+Para probar el sitio publicado con contenido:
+
+1. En Vercel → **Settings → Environment Variables**, agregá `EXAMPLE_RECIPES` = `true` (entorno *Production*).
+2. Hacé **Redeploy**. El build agrega las 43 recetas de ejemplo que falten, a nombre de un usuario demo **sin contraseña** (nadie puede entrar con esa cuenta).
+3. Para sacarlas: cambiá la variable a `remove` y volvé a hacer Redeploy. Después podés borrar la variable.
+
 > Si tu dominio no es el `.vercel.app` principal, definí también `BETTER_AUTH_URL` con la URL pública.

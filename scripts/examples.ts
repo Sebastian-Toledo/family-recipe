@@ -11,7 +11,7 @@ for (const file of [".env.local", ".env"]) {
 }
 
 async function main() {
-  const { db } = await import("../src/db");
+  const { db, DATABASE_URL } = await import("../src/db");
   const { user } = await import("../src/db/schema");
   const { addSampleRecipes, DEMO_EMAIL } = await import("./seed");
 
@@ -20,7 +20,8 @@ async function main() {
     console.log("Se borró el usuario demo y todas sus recetas de ejemplo.");
     return;
   }
-  const added = await addSampleRecipes(db);
+  // Sólo la base local tiene un demo con contraseña; en Turso (producción) se crea sin contraseña.
+  const added = await addSampleRecipes(db, { withPassword: DATABASE_URL.startsWith("file:") });
   console.log(added ? `Se agregaron ${added} recetas de ejemplo.` : "Ya estaban todas las recetas de ejemplo.");
 }
 
