@@ -14,7 +14,7 @@ export const CATEGORIES: Category[] = [
   { name: "Pastas y arroces", emoji: "🍝" },
   { name: "Masas saladas", emoji: "🥟" },
   { name: "Verduras y ensaladas", emoji: "🥗" },
-  { name: "Salsas y aderezos", emoji: "🫙" },
+  { name: "Salsas y aderezos", emoji: "🥫" },
   { name: "Panes", emoji: "🍞" },
   { name: "Tortas y pastelería", emoji: "🎂" },
   { name: "Postres", emoji: "🍮" },
