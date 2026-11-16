@@ -13,7 +13,7 @@ const nunito = Nunito_Sans({ subsets: ["latin"], variable: "--font-nunito" });
 
 export const metadata: Metadata = {
   title: { default: SITE_NAME, template: `%s · ${SITE_NAME}` },
-  description: "Las recetas de Cristina, siempre a mano.",
+  description: "Las recetas de mamá, siempre a mano.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 md:py-10">{children}</main>
         <footer className="border-t border-line bg-brand-50/60 py-6 text-center text-sm text-muted print:hidden dark:bg-transparent">
-          Hecho con cariño para guardar las recetas de Cristina 🧡
+          Hecho con cariño para guardar las recetas de mamá 🧡
         </footer>
       </body>
     </html>

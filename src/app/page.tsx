@@ -86,7 +86,7 @@ async function Results({ q, category }: { q: string; category: string }) {
           Cargar la primera receta
         </Link>
       ) : (
-        "Muy pronto vas a encontrar acá las recetas de Cristina."
+        "Muy pronto vas a encontrar acá las recetas de mamá."
       )}
     </EmptyState>
   );

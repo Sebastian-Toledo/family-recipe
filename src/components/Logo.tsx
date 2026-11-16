@@ -1,5 +1,5 @@
 /**
- * Logo: una "C" de Cristina con un corazón adentro.
+ * Logo: una "C" de "Con amor" con un corazón adentro.
  * Usa los colores de la paleta (variables CSS), así acompaña cualquier tema.
  */
 export default function Logo({ className = "size-10" }: { className?: string }) {
