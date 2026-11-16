@@ -43,7 +43,7 @@
 /* Modo oscuro: lo decide el atributo data-theme del <html> (botón ☀️/🌙 o preferencia del sistema). */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* ---------- Paletas alternativas (para probar con el selector en desarrollo) ---------- */
+/* ---------- Paletas (se eligen desde el botón de tema; por defecto: oliva, ver src/lib/palettes.ts) ---------- */
 
 :root[data-palette="oliva"] {
   --color-brand-50: #f5f7ee;

@@ -7,7 +7,7 @@ import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import UserMenu from "./UserMenu";
 import MobileMenu from "./MobileMenu";
-import ThemeToggle from "./ThemeToggle";
+import ThemeMenu from "./ThemeMenu";
 
 export default async function Header() {
   const user = await getUser();
@@ -32,7 +32,7 @@ export default async function Header() {
         <NavLinks links={links} />
 
         <div className="flex shrink-0 items-center gap-2">
-          <ThemeToggle />
+          <ThemeMenu />
           {user ? (
             <>
               <Link href="/recetas/nueva" className="btn-primary hidden sm:inline-flex">
