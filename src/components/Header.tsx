@@ -22,7 +22,7 @@ export default async function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-30 border-b-4 border-brand-500 bg-surface/95 backdrop-blur print:hidden dark:border-b dark:border-line">
+    <header className="sticky top-0 z-30 bg-surface/95 backdrop-blur print:hidden">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href="/" className="flex min-w-0 items-center gap-3">
           <Logo className="size-10 shrink-0" />
@@ -55,6 +55,7 @@ export default async function Header() {
           <MobileMenu links={links} loggedIn={Boolean(user)} signUpOpen={isSignUpOpen} />
         </div>
       </div>
+      <div aria-hidden className="h-1 bg-gradient-to-r from-brand-500 to-alt-500" />
     </header>
   );
 }

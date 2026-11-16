@@ -8,7 +8,7 @@ const VERSOS = [
 
 export default function Namaste() {
   return (
-    <figure className="mt-14 rounded-2xl border border-line bg-gradient-to-br from-brand-50 via-pop-100/60 to-alt-300/30 px-6 py-10 text-center print:hidden md:px-12 dark:from-brand-500/15 dark:via-surface dark:to-alt-500/15">
+    <figure className="mt-14 rounded-2xl border border-line bg-gradient-to-br from-brand-100/70 to-alt-100/80 px-6 py-10 text-center print:hidden md:px-12 dark:from-brand-500/20 dark:to-alt-500/15">
       <span aria-hidden className="text-2xl">🙏</span>
       <blockquote className="mx-auto mt-3 max-w-4xl font-heading text-xl leading-relaxed md:text-2xl">
         {VERSOS.map((verso) => (

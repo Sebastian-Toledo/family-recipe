@@ -102,11 +102,11 @@ export default function ThemeMenu() {
                       active ? "bg-subtle ring-2 ring-brand-400" : "hover:bg-subtle"
                     }`}
                   >
-                    <span className="flex -space-x-1.5">
-                      {p.colors.map((c) => (
-                        <span key={c} className="size-5 rounded-full border border-black/10" style={{ background: c }} />
-                      ))}
-                    </span>
+                    <span
+                      aria-hidden
+                      className="size-8 shrink-0 rounded-full border border-black/10 shadow-inner"
+                      style={{ background: `linear-gradient(135deg, ${p.colors[0]} 0%, ${p.colors[0]} 30%, ${p.colors[1]} 100%)` }}
+                    />
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-semibold">{p.name}</span>
                       <span className="block text-xs text-muted">{p.hint}</span>

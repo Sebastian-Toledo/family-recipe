@@ -27,7 +27,7 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
 
   return (
     <>
-      <section className="mb-8 rounded-2xl bg-gradient-to-br from-brand-200 via-pop-100 to-alt-300/70 px-6 py-10 text-center md:py-14 dark:from-brand-500/20 dark:via-surface dark:to-alt-500/20">
+      <section className="mb-8 rounded-2xl bg-gradient-to-br from-brand-200 to-alt-300/70 px-6 py-10 text-center md:py-14 dark:from-brand-500/25 dark:to-alt-500/20">
         <Logo className="mx-auto mb-4 size-16" />
         <h1 className="text-4xl font-bold md:text-5xl">{SITE_NAME}</h1>
         <p className="mx-auto mt-3 max-w-2xl text-lg text-muted">{SITE_TAGLINE}</p>

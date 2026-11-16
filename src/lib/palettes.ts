@@ -1,13 +1,16 @@
-/** Paletas de colores que se pueden elegir desde el botón de tema. Los colores reales están en globals.css. */
+/**
+ * Temas que se pueden elegir desde el botón de tema: cada uno es un degradé de 2 colores
+ * (principal → secundario). Los tonos completos están en globals.css.
+ */
 export const PALETTES = [
-  { id: "oliva", name: "Oliva y lino", hint: "Oliva, ladrillo y limón", colors: ["#637a2f", "#c2553a", "#c9a51f"] },
-  { id: "terracota", name: "Terracota", hint: "Terracota, oliva y mostaza", colors: ["#c85a2c", "#5f7a3a", "#d4a017"] },
-  { id: "tomate", name: "Tomate", hint: "Tomate, albahaca y ocre", colors: ["#c8372b", "#3f7d4e", "#d49520"] },
-  { id: "talavera", name: "Azul talavera", hint: "Azul, ocre y verde de cerámica", colors: ["#2f6fab", "#c9901b", "#3e8a6b"] },
-  { id: "ciruela", name: "Ciruela", hint: "Ciruela, salvia y damasco", colors: ["#9a4a7b", "#3c8478", "#e07a45"] },
+  { id: "terracota", name: "Terracota", hint: "Terracota y oliva", colors: ["#c85a2c", "#5f7a3a"] },
+  { id: "oliva", name: "Oliva y lino", hint: "Oliva y ladrillo", colors: ["#637a2f", "#c2553a"] },
+  { id: "tomate", name: "Tomate", hint: "Tomate y albahaca", colors: ["#c8372b", "#3f7d4e"] },
+  { id: "talavera", name: "Azul talavera", hint: "Azul y ocre de cerámica", colors: ["#2f6fab", "#c9901b"] },
+  { id: "ciruela", name: "Ciruela", hint: "Ciruela y salvia", colors: ["#9a4a7b", "#3c8478"] },
 ] as const;
 
 export type PaletteId = (typeof PALETTES)[number]["id"];
 
 /** La paleta con la que arranca el sitio si nunca se eligió otra. */
-export const DEFAULT_PALETTE: PaletteId = "oliva";
+export const DEFAULT_PALETTE: PaletteId = "terracota";

@@ -43,7 +43,7 @@
 /* Modo oscuro: lo decide el atributo data-theme del <html> (botón ☀️/🌙 o preferencia del sistema). */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* ---------- Paletas (se eligen desde el botón de tema; por defecto: oliva, ver src/lib/palettes.ts) ---------- */
+/* ---------- Paletas (se eligen desde el botón de tema; por defecto: terracota, ver src/lib/palettes.ts) ---------- */
 
 :root[data-palette="oliva"] {
   --color-brand-50: #f5f7ee;
@@ -170,6 +170,14 @@
 }
 
 /* Modo oscuro: gris carbón por defecto y un fondo con el tono de cada paleta. */
+:root[data-theme="dark"] body {
+  background-image: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--color-brand-500) 16%, var(--color-canvas)) 0%,
+    var(--color-canvas) 45%,
+    color-mix(in oklab, var(--color-alt-500) 14%, var(--color-canvas)) 100%
+  );
+}
 :root[data-theme="dark"] {
   color-scheme: dark;
   --color-canvas: #141414;
@@ -218,7 +226,15 @@
     color-scheme: light;
   }
   body {
-    background: var(--color-canvas);
+    background-color: var(--color-canvas);
+    /* Degradé suave entre el color principal y el secundario del tema elegido. */
+    background-image: linear-gradient(
+      160deg,
+      color-mix(in oklab, var(--color-brand-100) 65%, var(--color-canvas)) 0%,
+      var(--color-canvas) 45%,
+      color-mix(in oklab, var(--color-alt-100) 75%, var(--color-canvas)) 100%
+    );
+    background-attachment: fixed;
     color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
   }
