@@ -3,7 +3,7 @@
 Un recetario familiar para guardar las recetas de mamá en formato digital y tenerlas siempre a mano.
 
 - **Cualquiera puede ver y buscar recetas** (por nombre, ingrediente o autor) y filtrarlas por categoría.
-- **Para cargar recetas hace falta una cuenta.** Sólo quien cargó una receta puede editarla o borrarla.
+- **Para cargar recetas hace falta una cuenta.** Por ahora el registro está cerrado: sólo entra la cuenta configurada en `ADMIN_EMAIL` (ver [Quién puede entrar](#quién-puede-entrar)). Sólo quien cargó una receta puede editarla o borrarla.
 - Cada usuario guarda sus **favoritas**.
 - Cada receta tiene foto, tiempo, porciones, ingredientes con subtítulos ("Para la masa:"), pasos numerados y "el secreto".
 - En la receta podés ir tachando ingredientes, compartir el link o imprimirla.
@@ -31,6 +31,30 @@ La primera vez, `npm run dev` hace solo lo siguiente:
 | `demo@recetario.local` | `demo1234` |
 
 Para empezar de cero, frená el servidor y borrá la carpeta `data/`.
+
+## Quién puede entrar
+
+El registro está cerrado: no hay botón de "Crear cuenta". La única cuenta es la que definís en variables de entorno, así el usuario y la contraseña nunca quedan en el código ni en GitHub:
+
+| Variable         | Qué es                                                                  |
+| ---------------- | ----------------------------------------------------------------------- |
+| `ADMIN_EMAIL`    | Tu email. Con esto se crea la cuenta.                                   |
+| `ADMIN_PASSWORD` | Tu contraseña (mínimo 8). Si no la ponés, se entra sólo con Google.     |
+| `ADMIN_NAME`     | Opcional: el nombre que se muestra.                                     |
+
+En local van en `.env.local` (no se sube a GitHub); en producción, en Vercel → **Settings → Environment Variables**. La cuenta se crea (o se le actualiza la contraseña) en cada `npm run dev` y en cada deploy.
+
+### Entrar con Google (opcional)
+
+1. En <https://console.cloud.google.com>, creá un proyecto → **APIs y servicios → Pantalla de consentimiento de OAuth** (tipo *Externo*; completá nombre y tu email).
+2. **Credenciales → Crear credenciales → ID de cliente de OAuth → Aplicación web**, con este **URI de redireccionamiento autorizado**:
+   - `https://TU-DOMINIO.vercel.app/api/auth/callback/google`
+   - (y para probar en local: `http://localhost:3000/api/auth/callback/google`)
+3. Copiá el ID y el secreto a `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET`.
+
+Google sólo deja entrar a cuentas que ya existen, o sea, a la de `ADMIN_EMAIL` (usá el mismo email de Google).
+
+Para abrir el registro a la familia más adelante: `ALLOW_SIGNUP=true` y, si querés, `INVITE_CODE` con un código.
 
 ## Scripts
 
@@ -97,10 +121,11 @@ A mano, sin la integración:
 2. En **Environment Variables**, cargá:
    - `DATABASE_URL` y `DATABASE_AUTH_TOKEN` (de Turso; no hacen falta si usaste la integración)
    - `BETTER_AUTH_SECRET`: generalo con `npx @better-auth/cli secret`
-   - `INVITE_CODE` (opcional): un código para que sólo la familia pueda registrarse
+   - `ADMIN_EMAIL` y `ADMIN_PASSWORD`: tu cuenta (ver [Quién puede entrar](#quién-puede-entrar))
+   - `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET` (opcional): para entrar con Google
 3. En **Storage → Create → Blob**, conectá un Blob Store al proyecto. Vercel agrega `BLOB_READ_WRITE_TOKEN` sola.
 4. Hacé deploy. El build aplica las migraciones en Turso automáticamente.
 
-En producción no se cargan los datos de ejemplo: la primera cuenta la creás vos desde **Crear cuenta**.
+En producción no se cargan los datos de ejemplo: entrás con la cuenta de `ADMIN_EMAIL` y empezás a cargar recetas.
 
 > Si tu dominio no es el `.vercel.app` principal, definí también `BETTER_AUTH_URL` con la URL pública.

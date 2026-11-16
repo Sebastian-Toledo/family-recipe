@@ -17,7 +17,9 @@ if (!isCI && !fs.existsSync(".env.local")) {
       `BETTER_AUTH_SECRET=${crypto.randomBytes(32).toString("base64url")}`,
       "BETTER_AUTH_URL=http://localhost:3000",
       "DATABASE_URL=file:data/recetario.db",
-      "# INVITE_CODE=milanesa2026",
+      "# Tu cuenta (el registro está cerrado). Ver .env.example.",
+      "# ADMIN_EMAIL=",
+      "# ADMIN_PASSWORD=",
       "",
     ].join("\n")
   );
@@ -49,6 +51,10 @@ async function main() {
     const { seedIfEmpty } = await import("./seed");
     await seedIfEmpty(db);
   }
+
+  // La cuenta de quien administra (ADMIN_EMAIL / ADMIN_PASSWORD), también en Vercel.
+  const { ensureAdmin } = await import("./admin");
+  await ensureAdmin(db);
 }
 
 main().catch((err) => {

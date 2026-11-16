@@ -9,9 +9,10 @@ import { useSignOut } from "./UserMenu";
 interface Props {
   links: { href: string; label: string }[];
   loggedIn: boolean;
+  signUpOpen: boolean;
 }
 
-export default function MobileMenu({ links, loggedIn }: Props) {
+export default function MobileMenu({ links, loggedIn, signUpOpen }: Props) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const signOut = useSignOut();
@@ -48,12 +49,14 @@ export default function MobileMenu({ links, loggedIn }: Props) {
               </>
             ) : (
               <>
-                <Link href="/ingresar" className="btn-outline">
+                <Link href="/ingresar" className={signUpOpen ? "btn-outline" : "btn-primary"}>
                   Ingresar
                 </Link>
-                <Link href="/registrarse" className="btn-primary">
-                  Crear cuenta
-                </Link>
+                {signUpOpen && (
+                  <Link href="/registrarse" className="btn-primary">
+                    Crear cuenta
+                  </Link>
+                )}
               </>
             )}
           </div>

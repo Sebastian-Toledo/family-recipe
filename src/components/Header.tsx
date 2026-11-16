@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { getUser } from "@/lib/session";
+import { isSignUpOpen } from "@/lib/auth";
 import { SITE_NAME } from "@/lib/site";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
@@ -41,15 +42,17 @@ export default async function Header() {
             </>
           ) : (
             <div className="hidden items-center gap-2 md:flex">
-              <Link href="/ingresar" className="btn-ghost text-accent">
+              <Link href="/ingresar" className={isSignUpOpen ? "btn-ghost text-accent" : "btn-primary"}>
                 Ingresar
               </Link>
-              <Link href="/registrarse" className="btn-primary">
-                Crear cuenta
-              </Link>
+              {isSignUpOpen && (
+                <Link href="/registrarse" className="btn-primary">
+                  Crear cuenta
+                </Link>
+              )}
             </div>
           )}
-          <MobileMenu links={links} loggedIn={Boolean(user)} />
+          <MobileMenu links={links} loggedIn={Boolean(user)} signUpOpen={isSignUpOpen} />
         </div>
       </div>
     </header>

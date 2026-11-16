@@ -86,7 +86,7 @@ async function Results({ q, category }: { q: string; category: string }) {
           Cargar la primera receta
         </Link>
       ) : (
-        "Creá una cuenta para cargar la primera."
+        "Muy pronto vas a encontrar acá las recetas de Cristina."
       )}
     </EmptyState>
   );
