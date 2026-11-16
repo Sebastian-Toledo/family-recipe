@@ -37,7 +37,7 @@ async function main() {
   if (DATABASE_URL.startsWith("file:")) {
     if (process.env.VERCEL) {
       throw new Error(
-        "En Vercel falta DATABASE_URL (la base local no se guarda entre deploys). Configurá la base de Turso: ver README."
+        "En Vercel falta la base de Turso (DATABASE_URL o TURSO_DATABASE_URL); la base local no se guarda entre deploys. Ver README."
       );
     }
   }

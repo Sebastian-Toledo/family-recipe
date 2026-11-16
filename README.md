@@ -78,6 +78,10 @@ git config user.email "tu-email-personal@gmail.com"
 
 ### 2. Crear la base en Turso
 
+La forma más simple: al importar el proyecto en Vercel, agregá la integración **Turso** (o después, desde **Storage**). Crea la base y carga solas las variables, que la app también acepta: `DATABASE_TURSO_DATABASE_URL` y `DATABASE_TURSO_AUTH_TOKEN` si le pusiste el prefijo `DATABASE`, o `TURSO_DATABASE_URL` y `TURSO_AUTH_TOKEN`. No actives la opción de crear una rama de la base por deploy.
+
+A mano, sin la integración:
+
 1. Creá una cuenta en <https://turso.tech> e instalá la CLI (`turso`).
 2. Ejecutá:
 
@@ -91,7 +95,7 @@ git config user.email "tu-email-personal@gmail.com"
 
 1. En <https://vercel.com>, entrá con tu GitHub personal y elegí **Add New → Project → family-recipe**.
 2. En **Environment Variables**, cargá:
-   - `DATABASE_URL` y `DATABASE_AUTH_TOKEN` (de Turso)
+   - `DATABASE_URL` y `DATABASE_AUTH_TOKEN` (de Turso; no hacen falta si usaste la integración)
    - `BETTER_AUTH_SECRET`: generalo con `npx @better-auth/cli secret`
    - `INVITE_CODE` (opcional): un código para que sólo la familia pueda registrarse
 3. En **Storage → Create → Blob**, conectá un Blob Store al proyecto. Vercel agrega `BLOB_READ_WRITE_TOKEN` sola.
