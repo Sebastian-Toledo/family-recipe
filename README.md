@@ -42,6 +42,7 @@ Para empezar de cero, frená el servidor y borrá la carpeta `data/`.
 | `npm run typecheck`   | Revisa los tipos de TypeScript.                                 |
 | `npm run db:generate` | Crea una migración nueva después de cambiar `src/db/schema.ts`. |
 | `npm run db:studio`   | Abre Drizzle Studio para ver y editar la base desde el navegador.|
+| `npm run db:examples` | Agrega las 23 recetas de ejemplo que falten (`-- --remove` las borra todas). |
 
 ## Stack
 

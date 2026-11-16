@@ -13,7 +13,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:examples": "tsx scripts/examples.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",
