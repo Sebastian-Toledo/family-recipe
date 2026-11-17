@@ -87,7 +87,7 @@ export default function RecipeActions({ recipeId, title, isFavorite, canEdit, lo
             <Link href={`/recetas/${recipeId}/editar`} className="btn-ghost text-accent">
               <Pencil className="size-4" /> Editar
             </Link>
-            <button type="button" onClick={() => dialog.current?.showModal()} className="btn-ghost text-red-600">
+            <button type="button" onClick={() => dialog.current?.showModal()} className="btn-ghost text-accent">
               <Trash2 className="size-4" /> Borrar
             </button>
           </>

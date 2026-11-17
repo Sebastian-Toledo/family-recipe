@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { Clock, Heart, User } from "lucide-react";
+import CardFavoriteButton from "./CardFavoriteButton";
 import type { RecipeSummary } from "@/lib/recipes";
 import { TONE_CLASSES, categoryTone } from "@/lib/categories";
 import RecipeImage from "./RecipeImage";
 
-export function RecipeCard({ recipe }: { recipe: RecipeSummary }) {
+export function RecipeCard({ recipe, loggedIn = false }: { recipe: RecipeSummary; loggedIn?: boolean }) {
   return (
     <article className="card group relative overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
       <div className="relative">
         <RecipeImage src={recipe.imageUrl} alt="" category={recipe.category} className="h-48" />
-        {recipe.isFavorite && (
+        {loggedIn ? (
+          <CardFavoriteButton recipeId={recipe.id} title={recipe.title} isFavorite={recipe.isFavorite} />
+        ) : recipe.isFavorite && (
           <span className="absolute top-3 right-3 rounded-full bg-white p-1.5 shadow" title="Favorita">
             <Heart className="size-4 fill-brand-500 text-brand-500" aria-label="Favorita" />
           </span>
@@ -41,11 +44,11 @@ export function RecipeCard({ recipe }: { recipe: RecipeSummary }) {
   );
 }
 
-export function RecipeGrid({ recipes }: { recipes: RecipeSummary[] }) {
+export function RecipeGrid({ recipes, loggedIn = false }: { recipes: RecipeSummary[]; loggedIn?: boolean }) {
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
+        <RecipeCard key={recipe.id} recipe={recipe} loggedIn={loggedIn} />
       ))}
     </div>
   );

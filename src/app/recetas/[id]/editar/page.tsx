@@ -11,13 +11,13 @@ export const metadata: Metadata = { title: "Editar receta" };
 export default async function EditRecipePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const user = await requireUser(`/recetas/${id}/editar`);
-  const recipe = await getRecipe(Number(id), user.id);
+  const recipe = await getRecipe(Number(id), user);
   if (!recipe) notFound();
 
   if (!recipe.canEdit) {
     return (
       <EmptyState emoji="🔒" title="No podés editar esta receta">
-        <p>Sólo quien la cargó ({recipe.createdByName}) puede editarla.</p>
+        <p>Sólo quien la cargó ({recipe.createdByName}) o el admin pueden editarla.</p>
         <Link href={`/recetas/${recipe.id}`} className="btn-primary mt-4">
           Volver a la receta
         </Link>

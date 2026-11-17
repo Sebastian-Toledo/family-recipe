@@ -26,7 +26,7 @@ export default async function RecipePage({ params, searchParams }: Props) {
   const { id } = await params;
   const { guardada } = await searchParams;
   const user = await getUser();
-  const recipe = await getRecipe(Number(id), user?.id);
+  const recipe = await getRecipe(Number(id), user);
   if (!recipe) notFound();
 
   const related = (await listRecipes({ category: recipe.category }, user?.id))
@@ -144,7 +144,7 @@ export default async function RecipePage({ params, searchParams }: Props) {
               Ver todas
             </Link>
           </div>
-          <RecipeGrid recipes={related} />
+          <RecipeGrid recipes={related} loggedIn={Boolean(user)} />
         </section>
       )}
     </article>

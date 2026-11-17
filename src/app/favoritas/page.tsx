@@ -16,7 +16,7 @@ export default async function FavoritesPage() {
       <h1 className="text-4xl font-bold">Mis favoritas</h1>
       <p className="mt-2 mb-8 text-muted">Las recetas que marcaste con el corazón.</p>
       {recipes.length ? (
-        <RecipeGrid recipes={recipes} />
+        <RecipeGrid recipes={recipes} loggedIn />
       ) : (
         <EmptyState emoji="🧡" title="Todavía no tenés favoritas">
           <p>Abrí una receta y tocá “Guardar en favoritas”.</p>

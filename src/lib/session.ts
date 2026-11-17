@@ -11,6 +11,17 @@ export async function getUser() {
   return (await getSession())?.user ?? null;
 }
 
+/** La cuenta de ADMIN_EMAIL puede editar y borrar cualquier receta (también las de ejemplo). */
+export function isAdmin(user: { email?: string | null } | null | undefined) {
+  const admin = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+  return Boolean(admin && user?.email?.toLowerCase() === admin);
+}
+
+/** Puede editar quien cargó la receta, o el admin. */
+export function canEditRecipe(user: { id: string; email?: string | null } | null | undefined, createdById: string) {
+  return Boolean(user && (user.id === createdById || isAdmin(user)));
+}
+
 /** Para páginas que exigen sesión: si no hay, manda a /ingresar y después vuelve a `returnTo`. */
 export async function requireUser(returnTo: string) {
   const user = await getUser();

@@ -2,6 +2,7 @@ import "server-only";
 import { and, desc, eq, like, or, sql, type SQL } from "drizzle-orm";
 import { db } from "@/db";
 import { favorites, recipes, user } from "@/db/schema";
+import { canEditRecipe } from "./session";
 
 export interface RecipeFilters {
   q?: string;
@@ -60,7 +61,8 @@ export async function listRecipes(filters: RecipeFilters, viewerId?: string) {
   return rows.map((r) => ({ ...r, isFavorite: Boolean(r.isFavorite) }));
 }
 
-export async function getRecipe(id: number, viewerId?: string) {
+export async function getRecipe(id: number, viewer?: { id: string; email?: string | null } | null) {
+  const viewerId = viewer?.id;
   if (!Number.isInteger(id)) return null;
   const [row] = await db
     .select({
@@ -77,7 +79,7 @@ export async function getRecipe(id: number, viewerId?: string) {
     ...row.recipe,
     createdByName: row.createdByName,
     isFavorite: Boolean(row.isFavorite),
-    canEdit: viewerId === row.recipe.createdById,
+    canEdit: canEditRecipe(viewer, row.recipe.createdById),
   };
 }
 

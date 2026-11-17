@@ -16,7 +16,7 @@ export default async function MyRecipesPage() {
       <h1 className="text-4xl font-bold">Mis recetas</h1>
       <p className="mt-2 mb-8 text-muted">Las recetas que cargaste vos. Entrá a cualquiera para editarla.</p>
       {recipes.length ? (
-        <RecipeGrid recipes={recipes} />
+        <RecipeGrid recipes={recipes} loggedIn />
       ) : (
         <EmptyState emoji="📝" title="Todavía no cargaste recetas">
           <p>Empezá por esa receta de mamá que siempre pedís.</p>

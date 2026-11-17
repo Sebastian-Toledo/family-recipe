@@ -7,7 +7,7 @@ import { z } from "zod";
 import { db } from "@/db";
 import { favorites, recipes } from "@/db/schema";
 import { CATEGORY_NAMES } from "./categories";
-import { getUser } from "./session";
+import { canEditRecipe, getUser } from "./session";
 import { ALLOWED_IMAGE_TYPES, MAX_IMAGE_BYTES, deleteImage, saveImage } from "./storage";
 
 export type FieldErrors = Partial<Record<"title" | "category" | "ingredients" | "steps" | "image", string>>;
@@ -74,7 +74,7 @@ export async function saveRecipe(_prev: RecipeFormState, formData: FormData): Pr
   if (id) {
     const [existing] = await db.select().from(recipes).where(eq(recipes.id, id));
     if (!existing) return { error: "Esa receta ya no existe." };
-    if (existing.createdById !== currentUser.id) return { error: "Sólo quien cargó la receta puede editarla." };
+    if (!canEditRecipe(currentUser, existing.createdById)) return { error: "Sólo quien cargó la receta puede editarla." };
 
     let imageUrl = existing.imageUrl;
     if (hasNewImage || formData.get("removeImage") === "true") {
@@ -102,7 +102,7 @@ export async function deleteRecipe(id: number): Promise<{ error?: string }> {
 
   const [existing] = await db.select().from(recipes).where(eq(recipes.id, id));
   if (!existing) return { error: "Esa receta ya no existe." };
-  if (existing.createdById !== currentUser.id) return { error: "Sólo quien cargó la receta puede borrarla." };
+  if (!canEditRecipe(currentUser, existing.createdById)) return { error: "Sólo quien cargó la receta puede borrarla." };
 
   await db.delete(recipes).where(eq(recipes.id, id));
   await deleteImage(existing.imageUrl);

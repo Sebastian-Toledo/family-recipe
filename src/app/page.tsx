@@ -73,7 +73,7 @@ async function Results({ q, category }: { q: string; category: string }) {
   const user = await getUser();
   const recipes = await listRecipes({ q, category }, user?.id);
 
-  if (recipes.length > 0) return <RecipeGrid recipes={recipes} />;
+  if (recipes.length > 0) return <RecipeGrid recipes={recipes} loggedIn={Boolean(user)} />;
 
   if (q || category) {
     return (
